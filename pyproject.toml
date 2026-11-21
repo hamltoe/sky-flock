@@ -1,0 +1,34 @@
+[project]
+name = "skyflock"
+version = "0.1.0"
+description = "Optical tracking of airborne objects and sky lights on the OpenSky state-vector format"
+requires-python = ">=3.11"
+license = { text = "GPL-3.0-or-later" }
+dependencies = [
+  "numpy>=1.26",
+  "pydantic>=2",
+  "PyYAML>=6",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+sky = ["pandas>=2", "skyfield>=1.49"]
+detect = ["onnxruntime>=1.18"]
+capture = ["opencv-python>=4.10"]
+
+[project.scripts]
+skyflock = "skyflock.cli:main"
+
+[project.entry-points."skyflock.detectors"]
+threshold = "skyflock.detect.threshold:ThresholdDetector"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

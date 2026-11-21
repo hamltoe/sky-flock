@@ -1,0 +1,12 @@
+device: cpu
+threads: 4
+batch_size: 1
+max_fps: 10
+idle_fps: 1
+active_fps: 15
+hold_seconds: 4
+drop_frames: true
+detector: threshold
+model_path: null
+threshold: 200
+cell: 8
